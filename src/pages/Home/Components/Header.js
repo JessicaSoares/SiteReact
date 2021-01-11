@@ -1,5 +1,11 @@
 import React from 'react';
+import { Button } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 
+const useStyles = makeStyles({
+
+    
+})
 
 function Header(){
 return (
@@ -9,7 +15,7 @@ return (
        <a href='/'> Conecta dev- Alteração </a>
     </div>
     <div>
-    <button>Novo post </button>
+    <Button variant="contained" color="primary">Novo post</Button>
         <span>img1</span>
         <span>img2 </span>
         </div>
