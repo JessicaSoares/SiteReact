@@ -1,12 +1,20 @@
 import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+// eslint-disable-next-line
+const useStyles = makeStyles({
+    root:{
 
+
+    }
+
+})
 function NavBar(){
 
 return(
-    <div>
+    <Paper>
         NavBar
-    </div>
-
+    </Paper>
  )
 }
 

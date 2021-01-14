@@ -5,6 +5,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import SvgIcon from '@material-ui/core/SvgIcon';
 import {Bell} from 'react-feather';
+import Avatar from '@material-ui/core/Avatar';
 
 
 const useStyles = makeStyles({
@@ -24,7 +25,10 @@ const useStyles = makeStyles({
 
     },
     button:{
-        paddingRight:10
+        marginRight:10
+    },
+    bell:{
+        marginRight:10
     }
     
 });
@@ -38,11 +42,13 @@ return (
              <img src = "/images/logo.png" alt = "logo" className = {classes.img} />
              <div className = {classes.grow}> </div>
              <div className = {classes.userSection}> </div>
-            <Button variant = "contained" color = "primary">
+            <Button variant = "contained" color = "primary" className={classes.button}>
             Novo post
 
             </Button>
-            <SvgIcon>
+
+            <Avatar alt="Remy Sharp" src="images/avatar.png" />
+            <SvgIcon className={classes.bell}>
                 <Bell></Bell>
             </SvgIcon>
 
