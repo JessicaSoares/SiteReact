@@ -39,18 +39,22 @@ return (
 
      <AppBar position="fixed" color="inherit" className={classes.AppBar}>
          <Toolbar>
+             
              <img src = "/images/logo.png" alt = "logo" className = {classes.img} />
              <div className = {classes.grow}> </div>
+             
              <div className = {classes.userSection}> </div>
-            <Button variant = "contained" color = "primary" className={classes.button}>
+             <Button variant = "contained" color = "primary" className={classes.button}>
             Novo post
 
             </Button>
 
-            <Avatar alt="Remy Sharp" src="images/avatar.png" />
+            
             <SvgIcon className={classes.bell}>
                 <Bell></Bell>
             </SvgIcon>
+
+            <Avatar alt="Remy Sharp" src="images/avatar.png" />
 
              
 
