@@ -1,4 +1,4 @@
-import React from 'react';
+import React {useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import  Typography  from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid'
@@ -6,6 +6,12 @@ import Box from '@material-ui/core/Box'
 import Avatar from '@material-ui/core/Avatar'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import TextField from '@material-ui/core/TextField'
+import Button from '@material-ui/core/Button'
+import Link from '@material-ui/core/Link'
+import { useNavigate } from 'react-router-dom'
+
+
+import AuthService from '../../services/authService';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -23,12 +29,58 @@ const useStyles = makeStyles((theme) => ({
     avatar: {
 
         background: theme.palette.primary.main,
-    }
+        marginBottom: theme.spacing(1)
+    },
+    button:{
+      marginTop: theme.spacing(1)
+
+    },
+    link: {
+
+      marginTop: theme.spacing(1)
+    },
+    form: {
+      margin: theme.spacing(2, 4),
+    },
 
   }));
 
+function CopyRight(){
+return(
+  <Typography variant="body2" align="center">
+  {'Copyright © '}
+  <a
+    color="inherit"
+    href="https://www.youtube.com/channel/UCVE9-HO_GzLtDK4IGKVSYXA"
+  >
+    Lucas Nhimi
+  </a>{' '}
+  {new Date().getFullYear()}
+</Typography>
+)
+
+}
+
 function SignIn(){
     const classes = useStyles();
+    const navigate = useNavigate();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    
+async function handleSignIn(){
+
+  try{
+
+    await authservice.SignIn('jessicassoarez@gmail.com', 'admin');
+    navigate('/');
+  } catch (error){
+
+    console.log(error.response)
+
+
+  }
+  
+    }
 return (
     <Grid container className={classes.root}>
        <Grid
@@ -59,12 +111,16 @@ return (
         </Typography>
       </Grid>
     <Grid item md={5}>
-          <Box display= "flex" flexDirection = "column" alignItems = "center" m={8}>
+          <Box display= "flex" flexDirection = "column" alignItems = "center" mt={8}>
           <Avatar className ={classes.avatar}>
         <LockOutlinedIcon />
 
           </Avatar>
-          <form>
+
+          <Typography variant="h5">
+            Acesso
+          </Typography>
+          <form className={classes.form}>
           <TextField
                   variant="outlined"
                   margin="normal"
@@ -75,6 +131,7 @@ return (
                   name="email"
                   autoComplete="email"
                   autoFocus
+                  value = ""
                   
                 />
                 <TextField
@@ -89,8 +146,23 @@ return (
                   autoComplete="current-password"
                   
                 />
+                <Button fullWidth variant = "contained" color = "primary" className={classes.button}
+                onClick={handleSignIn}>
+                Entrar
+                </Button>
+                <Grid container>
+                 <Grid item>
+                   <Link>  Esqueceu sua senha ?</Link>
 
-</form>
+                  
+                 </Grid>
+                 <Grid item>
+
+                 <Link>  Não tem uma conta ? Registre-se</Link>
+                </Grid>
+                </Grid>
+            </form>
+            <CopyRight />
           </Box>
 
 
