@@ -131,7 +131,7 @@ return (
                   name="email"
                   autoComplete="email"
                   autoFocus
-                  value = ""
+                  value = {email}
                   
                 />
                 <TextField
@@ -144,6 +144,8 @@ return (
                   type="password"
                   id="password"
                   autoComplete="current-password"
+                  value = {password}
+                  
                   
                 />
                 <Button fullWidth variant = "contained" color = "primary" className={classes.button}
