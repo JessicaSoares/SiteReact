@@ -132,6 +132,7 @@ return (
                   autoComplete="email"
                   autoFocus
                   value = {email}
+                  onChange= {(event) => setEmail(event.target.value )}
                   
                 />
                 <TextField
@@ -160,7 +161,7 @@ return (
                  </Grid>
                  <Grid item>
 
-                 <Link>  Não tem uma conta ? Registre-se</Link>
+                 <Link>  Não tem uma conta? Registre-se</Link>
                 </Grid>
                 </Grid>
             </form>
