@@ -1,4 +1,4 @@
-import React {useState} from 'react';
+import React , {useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import  Typography  from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid'
@@ -12,6 +12,8 @@ import { useNavigate } from 'react-router-dom'
 
 
 import AuthService from '../../services/authService';
+import { EmailTwoTone } from '@material-ui/icons';
+import { FormHelperText } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -66,16 +68,18 @@ function SignIn(){
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState();
     
 async function handleSignIn(){
 
   try{
 
-    await authservice.SignIn('jessicassoarez@gmail.com', 'admin');
+    await authservice.SignIn(email, password);
     navigate('/');
   } catch (error){
 
-    console.log(error.response)
+    
+    setErrorMessage(error.response.data.message);
 
 
   }
@@ -146,6 +150,7 @@ return (
                   id="password"
                   autoComplete="current-password"
                   value = {password}
+                  onChange= {(event) => setPassword(event.target.value )}
                   
                   
                 />
@@ -153,6 +158,17 @@ return (
                 onClick={handleSignIn}>
                 Entrar
                 </Button>
+
+                {
+                  errorMessage &&
+                  <FormHelperText>
+
+                    {error}
+                  </FormHelperText> 
+
+
+
+                }
                 <Grid container>
                  <Grid item>
                    <Link>  Esqueceu sua senha ?</Link>
